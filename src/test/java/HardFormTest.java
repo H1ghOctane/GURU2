@@ -1,4 +1,3 @@
-import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,29 +5,28 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class HardFormTest {
+public class HardFormTest extends BaseTest {
 
     @BeforeEach
     public void setUp() {
-        open("https://demoqa.com/automation-practice-form");
-        WebDriverRunner.getWebDriver().manage().window().maximize();
+        open("/automation-practice-form");
     }
 
     @DisplayName("Заполнение всех полей")
     @Test
-    public void AllFields() {
+    public void allFields() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#userEmail").setValue("mail@mail.com");
-        $("#gender-radio-1").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("5553535111");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1976");
         $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__day--026").click();
         $("#subjectsInput").setValue("Maths").pressEnter();
-        $("#hobbies-checkbox-1").parent().click();
-        $("#hobbies-checkbox-3").parent().click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("photo_2024-06-26_21-07-42.jpg");
         $("#currentAddress").setValue("Moscow");
         $("#react-select-3-input").setValue("NCR").pressEnter();
@@ -50,7 +48,7 @@ public class HardFormTest {
 
     @DisplayName("Заполнение только обязательных полей")
     @Test
-    public void OnlyRequiredFields() {
+    public void onlyRequiredFields() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#gender-radio-1").click();
@@ -65,16 +63,17 @@ public class HardFormTest {
 
     @DisplayName("Невозможность появления формы без заполнения пола")
     @Test
-    public void WithoutGender() {
+    public void withoutGender() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#userNumber").setValue("5553535111");
         $("#submit").click();
         $(".modal-dialog.modal-lg").shouldNotBe(visible);
     }
+
     @DisplayName("Невозможность появления формы, если в номере меньше десяти цифр")
     @Test
-    public void NumberValidation() {
+    public void numberValidation() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#gender-radio-1").click();
@@ -82,9 +81,10 @@ public class HardFormTest {
         $("#submit").click();
         $(".modal-dialog.modal-lg").shouldNotBe(visible);
     }
+
     @DisplayName("Невозможность появления формы, если указан неправильный мэйл")
     @Test
-    public void MailValidation() {
+    public void mailValidation() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#userEmail").setValue("mail");

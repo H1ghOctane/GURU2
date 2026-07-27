@@ -1,4 +1,3 @@
-import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,16 +7,16 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class EasyFormTest {
+public class EasyFormTest extends BaseTest {
+
     @BeforeEach
-    public void setUp() {
-        open("https://qa-guru.github.io/one-page-form/text-box.html");
-        WebDriverRunner.getWebDriver().manage().window().maximize();
+    void beforeEach() {
+        open("/text-box");
     }
 
     @DisplayName("Заполнение всех полей")
     @Test
-    public void ValidatfionMail() {
+    public void allFields() {
         $("#userName").setValue("Pavel Maltsev");
         $("#userEmail").setValue("mail@mail.com");
         $("#currentAddress").setValue("Moscow");
@@ -33,7 +32,7 @@ public class EasyFormTest {
 
     @DisplayName("Валидация поля мэйла")
     @Test
-    public void EmailValidation() {
+    public void emailValidation() {
         $("#userEmail").setValue("1");
         $("#submit").click();
         $("#output").shouldNotBe(visible);
