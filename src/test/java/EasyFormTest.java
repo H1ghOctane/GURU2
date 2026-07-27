@@ -16,7 +16,7 @@ public class EasyFormTest extends BaseTest {
 
     @DisplayName("Заполнение всех полей")
     @Test
-    public void allFields() {
+    public void allFieldsTest() {
         $("#userName").setValue("Pavel Maltsev");
         $("#userEmail").setValue("mail@mail.com");
         $("#currentAddress").setValue("Moscow");
@@ -32,7 +32,7 @@ public class EasyFormTest extends BaseTest {
 
     @DisplayName("Валидация поля мэйла")
     @Test
-    public void emailValidation() {
+    public void emailValidationTest() {
         $("#userEmail").setValue("1");
         $("#submit").click();
         $("#output").shouldNotBe(visible);

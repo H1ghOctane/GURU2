@@ -14,7 +14,7 @@ public class HardFormTest extends BaseTest {
 
     @DisplayName("Заполнение всех полей")
     @Test
-    public void allFields() {
+    public void allFieldsTest() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#userEmail").setValue("mail@mail.com");
@@ -48,7 +48,7 @@ public class HardFormTest extends BaseTest {
 
     @DisplayName("Заполнение только обязательных полей")
     @Test
-    public void onlyRequiredFields() {
+    public void onlyRequiredFieldsTest() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#gender-radio-1").click();
@@ -63,7 +63,7 @@ public class HardFormTest extends BaseTest {
 
     @DisplayName("Невозможность появления формы без заполнения пола")
     @Test
-    public void withoutGender() {
+    public void withoutGenderTest() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#userNumber").setValue("5553535111");
@@ -73,7 +73,7 @@ public class HardFormTest extends BaseTest {
 
     @DisplayName("Невозможность появления формы, если в номере меньше десяти цифр")
     @Test
-    public void numberValidation() {
+    public void numberValidationTest() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#gender-radio-1").click();
@@ -84,7 +84,7 @@ public class HardFormTest extends BaseTest {
 
     @DisplayName("Невозможность появления формы, если указан неправильный мэйл")
     @Test
-    public void mailValidation() {
+    public void mailValidationTest() {
         $("#firstName").setValue("Pavel");
         $("#lastName").setValue("Maltsev");
         $("#userEmail").setValue("mail");
