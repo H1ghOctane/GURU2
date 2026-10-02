@@ -1,20 +1,15 @@
-/.idea
-/build
-/.gradle
-*.class
-
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-.kotlin
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -31,8 +26,14 @@ out/
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
+**/src/main/**/bin/
 !**/src/test/**/bin/
+
+chromedriver.log
+.chromedriver.log
+*.log
+
+**/src/test/resources/file
 
 ### NetBeans ###
 /nbproject/private/
