@@ -10,7 +10,7 @@ public class CelendarComponent {
     private final SelenideElement yearSelect = $(".react-datepicker__year-select");
     private final SelenideElement monthSelect = $(".react-datepicker__month-select");
 
-    public CelendarComponent setDate (String day,String month, String year) {
+    public CelendarComponent setDate (String day, String month, String year) {
         dateInput.click();
         yearSelect.selectOption(year);
         monthSelect.selectOption(month);

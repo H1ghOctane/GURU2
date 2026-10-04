@@ -5,8 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static testPackage.TestData.*;
-
+import static testPackage.FakerData.*;
 public class HardFormTest extends BaseTest {
 
     @BeforeEach
