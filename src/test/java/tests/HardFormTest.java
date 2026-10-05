@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static testPackage.FakerData.*;
 public class HardFormTest extends BaseTest {
 
     @BeforeEach
@@ -17,36 +16,37 @@ public class HardFormTest extends BaseTest {
     @Test
     public void allFieldsTest() {
 
-        hardFormPage
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserMail(mail)
-                .typeUserGender(gender)
-                .typeUserNumber(number);
-
-        celendarComponent.setDate(day, month, year);
 
         hardFormPage
-                .typeSubject(maths)
-                .typeHobbies(hobbies)
-                .uploadPicture(photo)
-                .typeCurrentAddress(city)
-                .typeRegion(region)
-                .typeCityIndia(cityIndia)
+                .typeUserFirstName(faker.firstName)
+                .typeUserLastName(faker.lastName)
+                .typeUserMail(faker.mail)
+                .typeUserGender(faker.gender)
+                .typeUserNumber(faker.number);
+
+        celendarComponent.setDate(faker.day, faker.month, faker.year);
+
+        hardFormPage
+                .typeSubject(faker.maths)
+                .typeHobbies(faker.hobbies)
+                .uploadPicture(faker.photo)
+                .typeCurrentAddress(faker.city)
+                .typeRegion(faker.region)
+                .typeCityIndia(faker.cityIndia)
                 .submit();
 
         hardFormPage
                 .checkModalVisible()
-                .checkUserName(firstName + " " + lastName)
-                .checkMail(mail)
-                .checkGender(gender)
-                .checkNumber(number)
-                .checkDateOfBirth(day + " " + month + "," + year)
-                .checkSubject(maths)
-                .checkHobbies(hobbies.get(0) + ", " + hobbies.get(1))
-                .checkPicture(photo)
-                .checkAddress(city)
-                .checkStateAndCity(region + " " + cityIndia);
+                .checkUserName(faker.firstName + " " + faker.lastName)
+                .checkMail(faker.mail)
+                .checkGender(faker.gender)
+                .checkNumber(faker.number)
+                .checkDateOfBirth(faker.day + " " + faker.month + "," + faker.year)
+                .checkSubject(faker.maths)
+                .checkHobbies(faker.hobbies.get(0) + ", " + faker.hobbies.get(1))
+                .checkPicture(faker.photo)
+                .checkAddress(faker.city)
+                .checkStateAndCity(faker.region + " " + faker.cityIndia);
 
     }
 
@@ -55,15 +55,15 @@ public class HardFormTest extends BaseTest {
     public void onlyRequiredFieldsTest() {
 
         hardFormPage
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserGender(gender)
-                .typeUserNumber(number)
+                .typeUserFirstName(faker.firstName)
+                .typeUserLastName(faker.lastName)
+                .typeUserGender(faker.gender)
+                .typeUserNumber(faker.number)
                 .submit()
                 .checkModalVisible()
-                .checkUserName(firstName + " " + lastName)
-                .checkGender(gender)
-                .checkNumber(number);
+                .checkUserName(faker.firstName + " " + faker.lastName)
+                .checkGender(faker.gender)
+                .checkNumber(faker.number);
 
     }
 
@@ -72,9 +72,9 @@ public class HardFormTest extends BaseTest {
     public void withoutGenderTest() {
 
         hardFormPage
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserNumber(number)
+                .typeUserFirstName(faker.firstName)
+                .typeUserLastName(faker.lastName)
+                .typeUserNumber(faker.number)
                 .submit()
                 .checkModalNotVisible();
 
@@ -85,10 +85,10 @@ public class HardFormTest extends BaseTest {
     public void numberValidationTest() {
 
         hardFormPage
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserGender(gender)
-                .typeUserNumber(badNumber)
+                .typeUserFirstName(faker.firstName)
+                .typeUserLastName(faker.lastName)
+                .typeUserGender(faker.gender)
+                .typeUserNumber(faker.badNumber)
                 .submit()
                 .checkModalNotVisible();
 
@@ -99,11 +99,11 @@ public class HardFormTest extends BaseTest {
     public void mailValidationTest() {
 
         hardFormPage
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserMail(badMail)
-                .typeUserGender(gender)
-                .typeUserNumber(number)
+                .typeUserFirstName(faker.firstName)
+                .typeUserLastName(faker.lastName)
+                .typeUserMail(faker.badMail)
+                .typeUserGender(faker.gender)
+                .typeUserNumber(faker.number)
                 .submit()
                 .checkModalNotVisible();
 

@@ -8,12 +8,14 @@ import components.HardFormPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
+import testPackage.FakerData;
 
 public class BaseTest {
 
-    protected EasyFormPage easyFormPage = new EasyFormPage();
     protected HardFormPage hardFormPage = new HardFormPage();
     protected CelendarComponent celendarComponent = new CelendarComponent();
+    protected FakerData faker = new FakerData();
+    protected EasyFormPage easyFormPage = new EasyFormPage();
 
     @BeforeAll
     static void beforeAll() {

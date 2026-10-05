@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static testPackage.FakerData.*;
 
 public class EasyFormTest extends BaseTest {
 
@@ -18,17 +17,18 @@ public class EasyFormTest extends BaseTest {
     @Test
     public void allFieldsTest() {
 
+
         easyFormPage
-                .typeUserName(firstName + " " + lastName)
-                .typeUserMail(mail)
-                .typeUserAddress(address)
-                .typePermanentAddress(address)
+                .typeUserName(faker.firstName + " " + faker.lastName)
+                .typeUserMail(faker.mail)
+                .typeUserAddress(faker.address)
+                .typePermanentAddress(faker.address)
                 .submit()
                 .checkOutputVisible()
-                .outputName(firstName, lastName)
-                .outputEmail(mail)
-                .outputCurrentAddress(address)
-                .outputPermanentAddress(address);
+                .outputName(faker.firstName, faker.lastName)
+                .outputEmail(faker.mail)
+                .outputCurrentAddress(faker.address)
+                .outputPermanentAddress(faker.address);
 
     }
 
@@ -37,7 +37,7 @@ public class EasyFormTest extends BaseTest {
     public void emailValidationTest() {
 
         easyFormPage.
-                typeUserMail(badMail)
+                typeUserMail(faker.badMail)
                 .submit()
                 .checkOutputHidden();
     }
