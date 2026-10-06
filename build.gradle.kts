@@ -1,12 +1,24 @@
 plugins {
-    id("java")
+    `java-library`
+    id("io.qameta.allure") version "2.12.0"
 }
-
-group = "org.example"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+allure {
+    report {
+        version.set("2.32.0")
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) // обработка аннотации @Step
+        frameworks {
+            junit5 { // название фреймворка
+                adapterVersion.set("2.32.0") // версия интеграции фреймворка и Allure
+            }
+        }
+    }
 }
 
 dependencies {
@@ -16,6 +28,14 @@ dependencies {
     testImplementation("com.codeborne:selenide:7.5.1")
 }
 
-tasks.test {
+tasks.withType<Test> {
     useJUnitPlatform()
+    ignoreFailures = true
+
+    testLogging {
+        lifecycle {
+            events("started", "skipped", "failed", "standard_error", "standard_out")
+            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.SHORT
+        }
+    }
 }
