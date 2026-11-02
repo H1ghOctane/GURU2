@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import tests.BaseTest;
 import ui.pages.MainPage;
 
 @Epic("Aviasales UI")
@@ -12,7 +13,7 @@ import ui.pages.MainPage;
 @Story("Описание сервисов на главной странице")
 @Owner("H1ghOctane")
 @Tag("ui")
-public class ServicesTest extends TestBase {
+public class ServicesTest extends BaseTest {
 
     private final MainPage mainPage = new MainPage();
 

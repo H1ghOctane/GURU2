@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import tests.BaseTest;
 import ui.pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.webdriver;
@@ -16,7 +17,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Навигация")
 @Owner("H1ghOctane")
 @Tag("ui")
-public class NavigationTest extends TestBase {
+public class NavigationTest extends BaseTest {
 
     private final MainPage mainPage = new MainPage();
 
