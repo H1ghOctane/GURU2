@@ -14,7 +14,7 @@ import ui.pages.MainPage;
 @Story("Популярные города")
 @Owner("H1ghOctane")
 @Tag("ui")
-public class HotelsTest extends BaseTest {
+public class HotelsTest extends TestBase {
 
     private final MainPage mainPage = new MainPage();
 
