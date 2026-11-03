@@ -17,7 +17,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Навигация")
 @Owner("H1ghOctane")
 @Tag("ui")
-public class NavigationTest extends TestBase {
+public class NavigationTest extends BaseTest {
 
     private final MainPage mainPage = new MainPage();
 

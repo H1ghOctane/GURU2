@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import tests.BaseTest;
 import ui.data.CityEnum;
 import ui.pages.MainPage;
 
@@ -14,7 +13,7 @@ import ui.pages.MainPage;
 @Story("Популярные города")
 @Owner("H1ghOctane")
 @Tag("ui")
-public class HotelsTest extends TestBase {
+public class HotelsTest extends BaseTest {
 
     private final MainPage mainPage = new MainPage();
 

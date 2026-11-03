@@ -13,7 +13,7 @@ import ui.pages.MainPage;
 @Story("Описание сервисов на главной странице")
 @Owner("H1ghOctane")
 @Tag("ui")
-public class ServicesTest extends TestBase {
+public class ServicesTest extends BaseTest {
 
     private final MainPage mainPage = new MainPage();
 

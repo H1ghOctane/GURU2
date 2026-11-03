@@ -1,0 +1,61 @@
+package ui.tests;
+
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import helpers.Attach;
+import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeOptions;
+import ui.config.WebConfig;
+
+import java.util.Map;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
+
+
+public class BaseTest {
+
+    private static final WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
+
+    @BeforeAll
+    static void setUpOptions() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+
+      //  options.setCapability("browserVersion", "128.0"); // Укажите актуальную версию из вашего Selenoid
+        chromeOptions.addArguments("--disable-features=AutoDeElevate");
+        Configuration.browserCapabilities = chromeOptions;
+        Configuration.remote = "https://user1:1234@selenoid.qa.guru/wd/hub";
+        Configuration.baseUrl = webConfig.baseUrl();
+        Configuration.browserSize = "1920x1080";
+        Configuration.pageLoadStrategy = "eager";
+
+     //   Configuration.timeout = 10000;
+// Configuration.pageLoadTimeout = 30000;
+
+        chromeOptions.addArguments("--disable-dev-shm-usage", "--no-sandbox");
+        chromeOptions.setCapability("se:cdpEnabled", false);
+        chromeOptions.setCapability("selenoid:options", Map.of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+    }
+
+    @BeforeEach
+    void setUpUrl() {
+        open(webConfig.baseUrl());
+    }
+
+    @AfterEach
+    void addAttachments() {
+        if (Selenide.webdriver().driver().hasWebDriverStarted()) {
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.addVideo();
+            closeWebDriver();
+        }
+    }
+}
+
