@@ -1,6 +1,7 @@
 package components;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -10,6 +11,7 @@ public class CelendarComponent {
     private final SelenideElement yearSelect = $(".react-datepicker__year-select");
     private final SelenideElement monthSelect = $(".react-datepicker__month-select");
 
+    @Step("Устанавливаем дату рождения: {day} {month} {year}")
     public CelendarComponent setDate (String day, String month, String year) {
         dateInput.click();
         yearSelect.selectOption(year);
