@@ -17,16 +17,17 @@ public class HardFormTest extends BaseTest {
     public void allFieldsTest() {
 
 
-        hardFormPage
+        hardFormStepsPage
                 .typeUserFirstName(faker.firstName)
                 .typeUserLastName(faker.lastName)
                 .typeUserMail(faker.mail)
                 .typeUserGender(faker.gender)
                 .typeUserNumber(faker.number);
 
+
         celendarComponent.setDate(faker.day, faker.month, faker.year);
 
-        hardFormPage
+        hardFormStepsPage
                 .typeSubject(faker.maths)
                 .typeHobbies(faker.hobbies)
                 .uploadPicture(faker.photo)
@@ -35,7 +36,7 @@ public class HardFormTest extends BaseTest {
                 .typeCityIndia(faker.cityIndia)
                 .submit();
 
-        hardFormPage
+        hardFormStepsPage
                 .checkModalVisible()
                 .checkUserName(faker.firstName + " " + faker.lastName)
                 .checkMail(faker.mail)
@@ -54,7 +55,7 @@ public class HardFormTest extends BaseTest {
     @Test
     public void onlyRequiredFieldsTest() {
 
-        hardFormPage
+        hardFormStepsPage
                 .typeUserFirstName(faker.firstName)
                 .typeUserLastName(faker.lastName)
                 .typeUserGender(faker.gender)
@@ -71,7 +72,7 @@ public class HardFormTest extends BaseTest {
     @Test
     public void withoutGenderTest() {
 
-        hardFormPage
+        hardFormStepsPage
                 .typeUserFirstName(faker.firstName)
                 .typeUserLastName(faker.lastName)
                 .typeUserNumber(faker.number)
@@ -84,7 +85,7 @@ public class HardFormTest extends BaseTest {
     @Test
     public void numberValidationTest() {
 
-        hardFormPage
+        hardFormStepsPage
                 .typeUserFirstName(faker.firstName)
                 .typeUserLastName(faker.lastName)
                 .typeUserGender(faker.gender)
@@ -98,7 +99,7 @@ public class HardFormTest extends BaseTest {
     @Test
     public void mailValidationTest() {
 
-        hardFormPage
+        hardFormStepsPage
                 .typeUserFirstName(faker.firstName)
                 .typeUserLastName(faker.lastName)
                 .typeUserMail(faker.badMail)

@@ -1,12 +1,15 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 
+@Feature("Text Box Form")
 public class EasyFormTest extends BaseTest {
+
 
     @BeforeEach
     void beforeEach() {
@@ -17,8 +20,7 @@ public class EasyFormTest extends BaseTest {
     @Test
     public void allFieldsTest() {
 
-
-        easyFormPage
+        easyFormStepsPage
                 .typeUserName(faker.firstName + " " + faker.lastName)
                 .typeUserMail(faker.mail)
                 .typeUserAddress(faker.address)
@@ -36,7 +38,7 @@ public class EasyFormTest extends BaseTest {
     @Test
     public void emailValidationTest() {
 
-        easyFormPage.
+        easyFormStepsPage.
                 typeUserMail(faker.badMail)
                 .submit()
                 .checkOutputHidden();
